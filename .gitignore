@@ -1,0 +1,30 @@
+# Environment and secrets
+.env
+*.env.local
+*.secret
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Large temporary datasets (keep the reproducible 1MB apple_sample.parquet)
+data/raw/amazon_sample.parquet
+data/raw/twcs.csv
+data/raw/*.zip
+data/raw/*.tar.gz
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
