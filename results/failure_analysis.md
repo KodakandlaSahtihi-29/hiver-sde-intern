@@ -83,7 +83,7 @@ Gold ESCALATE_TO_HUMAN (41)          9                                32
 ---
 
 ### Failure Mode 5: Retrieval Semantic Drift on Sparse Queries
-- **Description**: Intent Concordance @ 1 for vector retrieval was measured at 48.5%. When customer tweets are terse (e.g. 5–8 words), cosine similarity matches superficial lexical tokens ("phone", "screen", "update") to historical threads that had entirely different root causes.
+- **Description**: Intent Concordance @ 1 for vector retrieval was measured at 43.5%. When customer tweets are terse (e.g. 5–8 words), cosine similarity matches superficial lexical tokens ("phone", "screen", "update") to historical threads that had entirely different root causes.
 - **Real Evaluation Example**:
   - **Example ID**: `gold_002`
   - **Customer Query**: *"ios11 was forced onto my iphone 6 - first time this has ever happened. It's broken my apps & phone call abilities! What do I do?"*

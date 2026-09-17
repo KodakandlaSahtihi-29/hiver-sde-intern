@@ -56,7 +56,7 @@ Using `scripts/create_golden_candidates.py`, we extracted 220 candidate tweets f
 
 ### 12. What are the two baselines?
 1. **Baseline 1 (Majority Class)**: Predicts the most frequent class (`Software_Bug_OS_Update` and `AUTO_HANDLE`) for all inputs. Sets the baseline floor (22.0% intent accuracy, 0.0% escalation recall).
-2. **Baseline 2 (TF-IDF + Logistic Regression on Weak Labels)**: Trained on the 3,499 training corpus using weak/heuristic pseudo-labels derived from keyword rules. It was strictly isolated from the 200 golden evaluation examples. Achieves 52.0% intent accuracy and 2.44% escalation recall.
+2. **Baseline 2 (TF-IDF + Logistic Regression on Weak Labels)**: Trained on the 3,499 training corpus using weak/heuristic pseudo-labels derived from keyword rules. It was strictly isolated from the 200 golden evaluation examples. Achieves 52.5% intent accuracy and 2.44% escalation recall.
 
 ### 13. What metrics did we use?
 - **Intent**: Accuracy (68.0%), Macro F1 (62.46%), Weighted F1 (70.51%), per-intent precision/recall/F1.
@@ -68,7 +68,7 @@ Using `scripts/create_golden_candidates.py`, we extracted 220 candidate tweets f
 In `src/evaluation/judge.py`, the judge evaluates each reply across 4 dimensions on a 1–5 scale. It runs via Gemini 1.5 Flash when an API key is present, and falls back to a deterministic rule-based rubric checking keyword overlap, absence of forbidden hallucinated phrases, empathy markers, and escalation alignment. In our offline test run, the deterministic fallback scored 4.40 / 5.0.
 
 ### 15. What is our headline metric?
-**Intent Macro F1 = 0.6246 (62.46%), Intent Accuracy = 68.00%, and Escalation Accuracy = 84.50%** (outperforming the majority baseline of 22.0% and weak-label baseline of 52.0%, while detecting 78.05% of human escalations compared to 0.0% and 2.44%).
+**Intent Macro F1 = 0.6246 (62.46%), Intent Accuracy = 68.00%, and Escalation Accuracy = 84.50%** (outperforming the majority baseline of 22.0% and weak-label baseline of 52.5%, while detecting 78.05% of human escalations compared to 0.0% and 2.44%).
 
 ### 16. Why is that headline metric misleading?
 1. **Macro F1 penalizes low-frequency minor classes**: Low recall on `General_Product_Inquiry` (F1: 0.2791, support: 15) pulls down Macro F1, whereas high-volume Battery (F1: 0.8182) and Security (F1: 0.7778) perform strongly. Weighted F1 is 0.7051.

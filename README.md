@@ -89,7 +89,7 @@ All numbers are measured directly from execution against the 200-sample human-ve
 | Model / System | Intent Accuracy | Intent Macro F1 | Intent Weighted F1 | Escalation Accuracy | Escalate Recall (Human) | Auto-Handle F1 | Retrieval Concordance | Judge Score (Deterministic Fallback) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Baseline 1 (Majority Class)** | 0.2200 | 0.0601 | 0.0793 | 0.7950 | 0.0000 | 0.8858 | N/A | N/A |
-| **Baseline 2 (TF-IDF + LogReg on Weak Labels)** | 0.5200 | 0.3840 | 0.5316 | 0.7950 | 0.0244 | 0.8852 | N/A | N/A |
+| **Baseline 2 (TF-IDF + LogReg on Weak Labels)** | 0.5250 | 0.3886 | 0.5345 | 0.7950 | 0.0244 | 0.8852 | N/A | N/A |
 | **Proposed AI Support Agent** | **0.6800** | **0.6246** | **0.7051** | **0.8450** | **0.7805** | **0.8984** | **43.5%** | **4.40 / 5.0** |
 
 *Note on Baseline 2: Trained exclusively on the 3,499 training corpus using weak/heuristic pseudo-labels derived from keyword matching. The 200 golden evaluation examples were strictly held out and never seen during training.*

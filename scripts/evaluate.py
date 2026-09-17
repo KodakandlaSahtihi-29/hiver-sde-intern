@@ -59,7 +59,7 @@ def run_evaluation(
 
     logger.info("=== STEP 2: TRAINING BASELINE MODELS ON RETRIEVAL CORPUS ===")
     # Generate heuristic labels for training corpus for baseline training
-    train_texts = [c.customer_query for c in train_corpus if c.conversation_id not in golden_cids]
+    train_texts = [c.customer_query for c in vector_store.corpus_conversations]
     train_intents = []
     train_decisions = []
 

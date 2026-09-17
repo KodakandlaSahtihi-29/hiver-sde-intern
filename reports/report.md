@@ -157,7 +157,7 @@ The complete evaluation harness (`scripts/evaluate.py`) was executed against the
 | Model / System | Intent Accuracy | Intent Macro F1 | Intent Weighted F1 | Escalation Accuracy | Escalate Recall (Human) | Auto-Handle F1 | Retrieval Concordance | Judge Score (Deterministic Fallback) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Baseline 1 (Majority Class)** | 0.2200 | 0.0601 | 0.0793 | 0.7950 | 0.0000 | 0.8858 | N/A | N/A |
-| **Baseline 2 (TF-IDF + LogReg on Weak Labels)** | 0.5200 | 0.3840 | 0.5316 | 0.7950 | 0.0244 | 0.8852 | N/A | N/A |
+| **Baseline 2 (TF-IDF + LogReg on Weak Labels)** | 0.5250 | 0.3886 | 0.5345 | 0.7950 | 0.0244 | 0.8852 | N/A | N/A |
 | **Proposed AI Support Agent** | **0.6800** | **0.6246** | **0.7051** | **0.8450** | **0.7805** | **0.8984** | **43.5%** | **4.40 / 5.0** |
 
 ---
@@ -170,11 +170,11 @@ The complete evaluation harness (`scripts/evaluate.py`) was executed against the
    - **Critical Vulnerability**: **0.0% Recall on Human Escalation**. It auto-handles every password lockout and unauthorized charge, resulting in complete operational failure on high-risk inquiries.
 2. **Baseline 2 (TF-IDF + Logistic Regression on Weak Labels)**:
    - Trained on the 3,499-conversation training corpus using weak/heuristic labels generated from keyword matching. Strictly isolated from the 200 golden evaluation examples.
-   - Reaches 52.0% intent accuracy and 0.3840 Macro F1.
+   - Reaches 52.5% intent accuracy and 0.3886 Macro F1.
    - **Critical Vulnerability**: Strong on frequent keyword patterns, but collapses on conversational queries, achieving only **2.44% Recall on Human Escalation** (1 / 41 cases detected).
 3. **Proposed AI Support Agent**:
-   - Outperforms Baseline 1 by $+46.0\%$ accuracy and Baseline 2 by $+16.0\%$ accuracy (68.0% vs. 52.0%).
-   - Achieves **0.6246 Macro F1** and **0.7051 Weighted F1**, substantially improving over Baseline 2 (+0.2406 Macro F1).
+   - Outperforms Baseline 1 by $+46.0\%$ accuracy and Baseline 2 by $+15.5\%$ accuracy (68.0% vs. 52.5%).
+   - Achieves **0.6246 Macro F1** and **0.7051 Weighted F1**, substantially improving over Baseline 2 (+0.2360 Macro F1).
    - Delivers **78.05% Recall on Human Escalation** (detecting 32 / 41 high-risk cases missed by both baselines) while maintaining 89.84% Auto-Handle F1.
 
 ### Granular Per-Intent Breakdown (AI Agent):
@@ -235,7 +235,7 @@ Extracted directly from error analysis on `results/evaluation_results.jsonl`:
 
 Our headline metric is: **Intent Macro F1 = 0.6246 (62.46%), Intent Accuracy = 68.00%, and Escalation Accuracy = 84.50%**.
 
-While this represents substantial gains over both the majority class baseline (22.0% accuracy, 0% escalation recall) and the TF-IDF baseline (52.0% accuracy, 2.4% escalation recall), presenting these headline numbers without context is misleading for four concrete operational reasons:
+While this represents substantial gains over both the majority class baseline (22.0% accuracy, 0% escalation recall) and the TF-IDF baseline (52.5% accuracy, 2.44% escalation recall), presenting these headline numbers without context is misleading for four concrete operational reasons:
 
 1. **Macro F1 Heavily Penalizes Low-Frequency Minor Classes**:
    - Macro F1 calculates the simple unweighted arithmetic mean across all 6 classes ($0.8182 + 0.7778 + 0.7246 + 0.6481 + 0.5000 + 0.2791) / 6 = 0.6246$.
@@ -263,7 +263,7 @@ While this represents substantial gains over both the majority class baseline (2
 
 If granted an additional week of engineering time, we would prioritize:
 
-1. **Contrastive Fine-Tuned Dense Embeddings**: Fine-tune a lightweight 22M parameter dual-encoder (`all-MiniLM-L6-v2`) using Multiple Negatives Ranking Loss on AppleSupport question-answer pairs to increase Intent Concordance from 48.5% to $> 75\%$.
+1. **Contrastive Fine-Tuned Dense Embeddings**: Fine-tune a lightweight 22M parameter dual-encoder (`all-MiniLM-L6-v2`) using Multiple Negatives Ranking Loss on AppleSupport question-answer pairs to increase Intent Concordance from 43.5% to $> 75\%$.
 2. **Hierarchical Intent & Entity Tagger**: Implement a 2-stage classifier that first identifies transactional intent (warranty, refund, dispute) before resolving device entities (charger, iPhone 8).
 3. **Dynamic Few-Shot In-Context Retrieval**: Dynamically inject verified golden exemplars into the generation prompt matching the predicted intent.
 4. **Automated Hashtag Normalization**: Deconstruct camelCase and concatenated Twitter hashtags (`#accessorynotsupported` $\rightarrow$ "accessory not supported") to recover 15–20% of lost confidence on informal tweets.
@@ -283,6 +283,6 @@ A complete, detailed rationale for each decision is documented in [reports/decis
 7. **Evidence-Aware Multi-Stage Escalation**: Decoupled escalation from intent classification so runtime retrieval similarity and evidence sufficiency act as an independent safety net.
 8. **Conservative Escalation Bias**: Intentionally prioritize safety over deflection (routing queries with confidence $<0.55$ or similarity $<0.18$ to humans). The cost of false auto-handling on security/billing is catastrophic, whereas the cost of unnecessary escalation is minimal.
 9. **Two-Stage Golden Set Review Workflow**: Candidate extraction from real Twitter threads followed by human verification via `review_queue.csv`, preserving realistic customer typos and frustration without synthetic artifacts.
-10. **Defensible Retrieval Metrics**: Measured Intent Concordance @ 1 (48.5%) and Cosine Similarity distributions instead of fabricating synthetic binary precision labels.
-11. **Two Distinct Empirical Baselines**: Evaluated against both a trivial baseline (Majority Class: 20.0% accuracy, 0% escalation recall) and a simple ML baseline (TF-IDF + Logistic Regression trained on training-corpus weak labels: 57.5% accuracy, 3.2% escalation recall) to demonstrate genuine value add.
+10. **Defensible Retrieval Metrics**: Measured Intent Concordance @ 1 (43.5%) and Cosine Similarity distributions instead of fabricating synthetic binary precision labels.
+11. **Two Distinct Empirical Baselines**: Evaluated against both a trivial baseline (Majority Class: 22.0% accuracy, 0% escalation recall) and a simple ML baseline (TF-IDF + Logistic Regression trained on training-corpus weak labels: 52.5% accuracy, 2.44% escalation recall) to demonstrate genuine value add.
 12. **Dual-Mode LLM-as-a-Judge**: Designed the judge module to run seamlessly with Gemini 1.5 Flash when `GEMINI_API_KEY` is present, while providing a transparent deterministic fallback rubric for offline, reproducible evaluation.
