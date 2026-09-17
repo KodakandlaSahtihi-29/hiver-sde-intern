@@ -178,6 +178,10 @@ def run_evaluation(
     avg_judge_esc = round(pd.Series([j["escalation"] for j in judge_scores]).mean(), 2)
     avg_judge_ovr = round(pd.Series([j["overall"] for j in judge_scores]).mean(), 2)
 
+    # Determine judge method used
+    judge_method = judge_scores[0].get("judge_method", "deterministic_rubric")
+    judge_col_name = "Judge Score (LLM: Gemini Flash)" if "gemini" in judge_method else "Judge Score (Deterministic Fallback Rubric)"
+
     # Construct Metrics Comparison Table
     metrics_summary = [
         {
@@ -189,10 +193,10 @@ def run_evaluation(
             "Escalate Recall (Human)": b1_esc_m["escalate_human_recall"],
             "Auto-Handle F1": b1_esc_m["auto_handle_f1"],
             "Retrieval Concordance": "N/A",
-            "Avg Judge Score": "N/A"
+            judge_col_name: "N/A"
         },
         {
-            "Model": "Baseline 2 (TF-IDF + Logistic Reg)",
+            "Model": "Baseline 2 (TF-IDF + LogReg on Weak Labels)",
             "Intent Accuracy": b2_intent_m["accuracy"],
             "Intent Macro F1": b2_intent_m["macro_f1"],
             "Intent Weighted F1": b2_intent_m["weighted_f1"],
@@ -200,7 +204,7 @@ def run_evaluation(
             "Escalate Recall (Human)": b2_esc_m["escalate_human_recall"],
             "Auto-Handle F1": b2_esc_m["auto_handle_f1"],
             "Retrieval Concordance": "N/A",
-            "Avg Judge Score": "N/A"
+            judge_col_name: "N/A"
         },
         {
             "Model": "Proposed AI Support Agent",
@@ -211,7 +215,7 @@ def run_evaluation(
             "Escalate Recall (Human)": agent_esc_m["escalate_human_recall"],
             "Auto-Handle F1": agent_esc_m["auto_handle_f1"],
             "Retrieval Concordance": retrieval_m["intent_concordance_at_1"],
-            "Avg Judge Score": avg_judge_ovr
+            judge_col_name: avg_judge_ovr
         }
     ]
 
@@ -253,13 +257,15 @@ def run_evaluation(
     print(f"  Intent Concordance @ 1:             {retrieval_m['intent_concordance_at_1']*100:.1f}%")
 
     print("\n" + "-" * 80)
-    print("LLM-AS-A-JUDGE QUALITY RUBRIC (1-5 SCALE):")
+    print(f"REPLY QUALITY EVALUATION RUBRIC (Method: {judge_method}):")
     print("-" * 80)
     print(f"  Relevance:                          {avg_judge_rel:.2f} / 5.0")
     print(f"  Groundedness:                       {avg_judge_grd:.2f} / 5.0")
     print(f"  Tone & Empathy:                     {avg_judge_ton:.2f} / 5.0")
     print(f"  Escalation Appropriateness:         {avg_judge_esc:.2f} / 5.0")
     print(f"  Overall Score:                      {avg_judge_ovr:.2f} / 5.0")
+    if judge_method == "deterministic_rubric":
+        print("  Notice: Evaluated using deterministic fallback rubric (no GEMINI_API_KEY provided in environment).")
     print("=" * 80 + "\n")
 
     return metrics_df, per_intent_df, full_eval_records

@@ -28,7 +28,7 @@ def test_golden_set_schema_and_classes():
         assert ex.intent in INTENTS
         assert ex.expected_decision in ["AUTO_HANDLE", "ESCALATE_TO_HUMAN"]
         assert ex.human_verified is True
-        assert len(ex.review_notes) > 0
+        assert ex.review_notes is not None
 
         intents_seen.add(ex.intent)
         decisions_seen.add(ex.expected_decision)

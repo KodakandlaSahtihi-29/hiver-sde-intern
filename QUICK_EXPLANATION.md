@@ -19,7 +19,7 @@ Kaggle's *Customer Support on Twitter* (`thoughtvector/customer-support-on-twitt
 We partitioned the 4,953 parsed conversations by index offset:
 - The first 3,500 conversations form the Knowledge Base retrieval corpus.
 - The remaining 1,453 conversations form the held-out candidate pool.
-From this held-out pool, we extracted 220 candidate conversations stratified across intent categories, which were then reviewed into the final 200 golden examples.
+From this held-out pool, we extracted 220 candidate conversations stratified across intent categories, generated a review queue (`data/golden/review_queue.csv`), and confirmed the final 200 golden examples.
 
 ### 5. What are the 6 intents?
 Derived directly from real `@AppleSupport` data:
@@ -52,35 +52,35 @@ In `src/escalation/policy.py`, escalation is evidence-aware across 5 stages:
 - Vague queries ($< 4$ words) or low similarity ($< 0.18$) trigger conservative escalation.
 
 ### 11. How did we create the golden set?
-Using `scripts/create_golden_candidates.py`, we extracted 220 candidate tweets from the held-out split (rows 3,501–4,953). In `scripts/review_and_build_golden_set.py`, each candidate was human-reviewed to verify intent, expected decision, and review notes, yielding exactly 200 balanced examples. `scripts/validate_golden_set.py` programmatically verifies 0% leakage against the retrieval index.
+Using `scripts/create_golden_candidates.py`, we extracted 220 candidate tweets from the held-out split (rows 3,501–4,953). We created a review queue (`data/golden/review_queue.csv`) with machine-suggested labels based on our taxonomy guidelines, and confirmed the 200 balanced examples into `data/golden/golden_set.jsonl` using `scripts/review_golden_set.py`. `scripts/validate_golden_set.py` programmatically verifies 0% leakage against the retrieval index.
 
 ### 12. What are the two baselines?
-1. **Baseline 1 (Majority Class)**: Predicts the most frequent class (`Software_Bug_OS_Update` and `AUTO_HANDLE`) for all inputs. Sets the baseline floor (20.0% intent accuracy, 0.0% escalation recall).
-2. **Baseline 2 (TF-IDF + Logistic Regression)**: Standard ML model trained on the training corpus. Achieves 51.5% intent accuracy and 3.1% escalation recall.
+1. **Baseline 1 (Majority Class)**: Predicts the most frequent class (`Software_Bug_OS_Update` and `AUTO_HANDLE`) for all inputs. Sets the baseline floor (22.0% intent accuracy, 0.0% escalation recall).
+2. **Baseline 2 (TF-IDF + Logistic Regression on Weak Labels)**: Trained on the 3,499 training corpus using weak/heuristic pseudo-labels derived from keyword rules. It was strictly isolated from the 200 golden evaluation examples. Achieves 52.0% intent accuracy and 2.44% escalation recall.
 
 ### 13. What metrics did we use?
-- **Intent**: Accuracy (73.5%), Macro F1 (73.17%), Weighted F1 (73.59%), per-intent precision/recall/F1.
-- **Escalation**: Accuracy (69.0%), Human Escalation Recall (50.0%), Auto-Handle F1 (77.37%).
-- **Retrieval**: Mean Top-1 Cosine Similarity (0.3555), Coverage at threshold (99.5%), Intent Concordance @ 1 (42.5%).
-- **LLM Judge**: 1–5 scale evaluating Relevance (4.06), Groundedness (4.67), Tone (4.14), and Escalation (4.22), Overall (4.27).
+- **Intent**: Accuracy (68.0%), Macro F1 (62.46%), Weighted F1 (70.51%), per-intent precision/recall/F1.
+- **Escalation**: Accuracy (84.5%), Human Escalation Recall (78.05%), Auto-Handle F1 (89.84%).
+- **Retrieval**: Mean Top-1 Cosine Similarity (0.3578), Coverage at threshold (99.5%), Intent Concordance @ 1 (43.5%).
+- **Reply Quality Rubric**: 1–5 scale evaluating Relevance (4.11), Groundedness (4.65), Tone (4.18), Escalation (4.68), Overall (4.40).
 
 ### 14. How does LLM-as-a-judge work?
-In `src/evaluation/judge.py`, the judge evaluates each reply across 4 dimensions on a 1–5 scale. It runs via Gemini 1.5 Flash when an API key is present, and falls back to a deterministic rule-based rubric checking keyword overlap, absence of forbidden hallucinated phrases, empathy markers, and escalation alignment.
+In `src/evaluation/judge.py`, the judge evaluates each reply across 4 dimensions on a 1–5 scale. It runs via Gemini 1.5 Flash when an API key is present, and falls back to a deterministic rule-based rubric checking keyword overlap, absence of forbidden hallucinated phrases, empathy markers, and escalation alignment. In our offline test run, the deterministic fallback scored 4.40 / 5.0.
 
 ### 15. What is our headline metric?
-**Intent Macro F1 = 0.7317 (73.17%) and Intent Accuracy = 73.50%** (outperforming the majority baseline of 20.0% and TF-IDF baseline of 51.5%).
+**Intent Macro F1 = 0.6246 (62.46%), Intent Accuracy = 68.00%, and Escalation Accuracy = 84.50%** (outperforming the majority baseline of 22.0% and weak-label baseline of 52.0%, while detecting 78.05% of human escalations compared to 0.0% and 2.44%).
 
 ### 16. Why is that headline metric misleading?
-1. **Macro F1 treats unequal business risks equally**: High recall on general inquiries (95.5%) masks low recall on billing disputes (41.4%), where mistakes cost real money.
-2. **Sample size confidence interval**: On $N=200$, the 95% confidence interval is $\pm 6.1\%$, meaning true accuracy is anywhere between 67.4% and 79.6%.
-3. **Escalation accuracy (69.0%) masks a 50% blind spot**: The trivial baseline gets 68.0% escalation accuracy by *never escalating*. Our agent's actual human escalation recall is only 50.0% (detecting 32/64 high-risk cases).
-4. **Judge leniency bias**: Retrieval concordance is only 42.5%, yet the judge gave 4.27/5.0 because LLMs reward polite phrasing regardless of historical exemplar mismatch.
+1. **Macro F1 penalizes low-frequency minor classes**: Low recall on `General_Product_Inquiry` (F1: 0.2791, support: 15) pulls down Macro F1, whereas high-volume Battery (F1: 0.8182) and Security (F1: 0.7778) perform strongly. Weighted F1 is 0.7051.
+2. **Sample size confidence interval**: On $N=200$, the 95% confidence interval is $\pm 6.5\%$ on 68.0% accuracy, meaning true population accuracy is between 61.5% and 74.5%.
+3. **Escalation accuracy (84.5%) masks 9 false negatives**: The trivial baseline gets 79.5% escalation accuracy by *never escalating*. Our agent's actual human escalation recall is 78.05% (detecting 32/41 high-risk cases), meaning 9 un-escalated cases slip through.
+4. **Retrieval Concordance is 43.5%**: In 56.5% of queries, retrieval returned an exemplar from a different intent due to overlapping lexical tokens on short tweets.
 
 ### 17. What are the top 5 failure modes?
-1. **Billing masked by hardware nouns**: e.g., "charger ripped after 11 months, need replacement" misclassified as battery/charger diagnostic instead of warranty replacement.
-2. **Over-escalation on informal tweets**: Hashtags like `#thisaccessoryisnotsuppotted` drop confidence below 0.55, causing safe questions to be needlessly escalated.
-3. **Hardware confounded with OS updates**: "iOS 11 update made my phone lose service" misclassified as software bug instead of carrier/SIM connectivity.
-4. **Account security with indirect phrasing**: "Why is my phone suddenly asking for passwords?" missed by keyword intent, but caught by retrieval low-similarity fallback.
+1. **Billing / media content masked by OS update**: e.g., "music from iTunes gone after OS update" misclassified as software bug instead of media purchase recovery.
+2. **Over-escalation on informal tweets**: Hashtags like `#help` drop confidence below 0.55, causing safe questions to be needlessly escalated.
+3. **Hardware confounded with OS updates**: "iOS 11.0.2 update is making my iPhone 7 constantly lose service" misclassified as software bug instead of carrier/SIM connectivity.
+4. **Account security with indirect phrasing**: Scam/phishing inquiries missed by keyword intent, but caught by retrieval low-similarity fallback.
 5. **Retrieval semantic drift on sparse queries**: 5-word tweets match superficial words rather than the underlying technical root cause.
 
 ### 18. What would we do with one additional week?
@@ -93,10 +93,10 @@ In `src/evaluation/judge.py`, the judge evaluates each reply across 4 dimensions
 ## Likely Interviewer Questions & How to Answer
 
 ### Q: "Why didn't you use LangChain, LlamaIndex, or CrewAI?"
-> *"I chose not to use heavyweight agentic frameworks because they add unnecessary abstraction layers, latency overhead, and hidden failure modes. For a production customer support system, we need deterministic control over state transitions, explicit error handling, and zero external dependency risk. Writing modular Python with Pydantic and Scikit-Learn makes every stage testable, fast (<15ms latency), and easy to modify live."*
+> *"I chose not to use heavyweight agentic frameworks because they add unnecessary abstraction layers, latency overhead, and hidden failure modes. For a production customer support system, we need deterministic control over state transitions, explicit error handling, and zero external dependency risk. Writing modular Python with Pydantic and Scikit-Learn makes every stage testable, fast (<10ms latency), and easy to modify live."*
 
-### Q: "Your escalation recall is 50%. How would you improve that in production?"
-> *"Our error analysis showed that the 32 missed escalations were primarily billing inquiries where customers used device nouns (like 'charger' or 'app') without explicitly saying 'refund'. I would implement a two-stage hierarchical classifier: Stage 1 detects transactional/warranty/dispute intent from verbs, and Stage 2 classifies the device component. I would also add few-shot exemplars specifically targeting indirect billing requests."*
+### Q: "Your escalation recall is 78.05%. How would you improve that in production?"
+> *"Our error analysis showed that the 9 missed escalations were primarily cases where customer queries mentioned software updates while losing purchased iTunes content or describing hardware symptoms. I would implement a two-stage hierarchical classifier: Stage 1 detects transactional/warranty/dispute intent from verbs, and Stage 2 classifies the device component. I would also add few-shot exemplars specifically targeting indirect billing requests."*
 
 ### Q: "Why did you use TF-IDF instead of OpenAI Ada or HuggingFace embeddings?"
 > *"In device support, specific technical tokens like 'iOS 11.0.2', '2FA', 'SIM card', or 'HomeKit' carry critical discriminative signal. Off-the-shelf dense embeddings often compress these into generic device vectors. TF-IDF with sublinear term-frequency gives exact keyword matching, requires zero external model download, indexes 3,500 documents in 200 milliseconds, and ensures anyone evaluating the repo can reproduce results without API dependencies."*

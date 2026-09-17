@@ -1,4 +1,7 @@
 import json
+import sys
+
+sys.stdout.reconfigure(encoding='utf-8')
 
 with open("results/evaluation_results.jsonl", "r", encoding="utf-8") as f:
     records = [json.loads(line) for line in f]

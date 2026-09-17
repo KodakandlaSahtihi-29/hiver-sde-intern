@@ -1,4 +1,4 @@
-Model,Intent Accuracy,Intent Macro F1,Intent Weighted F1,Escalation Accuracy,Escalate Recall (Human),Auto-Handle F1,Retrieval Concordance,Avg Judge Score
-Baseline 1 (Majority Class),0.2,0.0556,0.0667,0.68,0.0,0.8095,N/A,N/A
-Baseline 2 (TF-IDF + Logistic Reg),0.515,0.4352,0.4682,0.69,0.0312,0.8144,N/A,N/A
-Proposed AI Support Agent,0.735,0.7317,0.7359,0.69,0.5,0.7737,0.425,4.27
+Model,Intent Accuracy,Intent Macro F1,Intent Weighted F1,Escalation Accuracy,Escalate Recall (Human),Auto-Handle F1,Retrieval Concordance,Judge Score (Deterministic Fallback Rubric)
+Baseline 1 (Majority Class),0.22,0.0601,0.0793,0.795,0.0,0.8858,N/A,N/A
+Baseline 2 (TF-IDF + LogReg on Weak Labels),0.52,0.384,0.5316,0.795,0.0244,0.8852,N/A,N/A
+Proposed AI Support Agent,0.68,0.6246,0.7051,0.845,0.7805,0.8984,0.435,4.4

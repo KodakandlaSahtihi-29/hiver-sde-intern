@@ -77,7 +77,7 @@ This log documents 12 non-obvious architectural, algorithmic, and evaluation dec
 ---
 
 ### Decision 10: Defensible Retrieval Evaluation Metrics
-- **Decision**: Measure retrieval quality using **Intent Concordance @ 1** (42.5%) and **Cosine Similarity Distributions** (mean: 0.3555, coverage: 99.5%) rather than fabricating synthetic "Precision@3" relevance labels.
+- **Decision**: Measure retrieval quality using **Intent Concordance @ 1** (43.5%) and **Cosine Similarity Distributions** (mean: 0.3578, coverage: 99.5%) rather than fabricating synthetic "Precision@3" relevance labels.
 - **Why**: Precision@3 requires binary relevance judgments for every retrieved document across all 200 queries ($200 \times 3 = 600$ manual judgments). Generating synthetic relevance tags would be dishonest. Intent Concordance provides an objective, defensible measure of whether retrieval stays within the customer's problem domain.
 - **Alternative Considered**: LLM-generated binary relevance labels for every retrieved document.
 - **Why Alternative Was Not Selected**: Subject to LLM judge hallucination and circular evaluation bias.
@@ -86,7 +86,7 @@ This log documents 12 non-obvious architectural, algorithmic, and evaluation dec
 
 ### Decision 11: Two Distinct Empirical Baselines
 - **Decision**: Benchmark against both a **Trivial Baseline** (Majority-Class Predictor) and a **Simple ML Baseline** (TF-IDF + Logistic Regression).
-- **Why**: A majority-class baseline sets the absolute floor (20.0% accuracy), exposing class imbalance. A TF-IDF Logistic Regression baseline represents standard pre-LLM production classification (51.5% accuracy), demonstrating the clear value added by our structured agent (73.5% accuracy, 73.17% Macro F1).
+- **Why**: A majority-class baseline sets the absolute floor (22.0% accuracy), exposing class imbalance. A TF-IDF Logistic Regression baseline represents standard pre-LLM production classification (52.0% accuracy, 0.3840 Macro F1), demonstrating the clear value added by our structured agent (68.0% accuracy, 0.6246 Macro F1).
 - **Alternative Considered**: Random guessing baseline.
 - **Why Alternative Was Not Selected**: Random guessing is weaker and less informative than majority class; Hiver explicitly requested a trivial baseline and a simple ML baseline.
 

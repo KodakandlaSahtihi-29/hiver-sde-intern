@@ -48,28 +48,39 @@ def validate_golden_set(
     valid_decisions = {"AUTO_HANDLE", "ESCALATE_TO_HUMAN"}
     intents_seen = set()
     decisions_seen = set()
+    seen_ids = set()
+    seen_cids = set()
 
     for idx, ex in enumerate(golden_examples):
         if not ex.id or not ex.conversation_id:
             logger.error(f"Row {idx} missing ID or conversation_id.")
             return False
+        if ex.id in seen_ids:
+            logger.error(f"Duplicate example ID detected in golden set: {ex.id}")
+            return False
+        if ex.conversation_id in seen_cids:
+            logger.error(f"Duplicate conversation ID detected in golden set: {ex.conversation_id}")
+            return False
+        seen_ids.add(ex.id)
+        seen_cids.add(ex.conversation_id)
+
         if len(ex.customer_message.strip()) < 10:
             logger.error(f"Row {idx} customer message too short.")
             return False
-        if ex.intent not in INTENTS:
-            logger.error(f"Row {idx} has invalid intent: {ex.intent}")
+        if not ex.intent or ex.intent not in INTENTS:
+            logger.error(f"Row {idx} has invalid or unpopulated intent: '{ex.intent}'")
             return False
-        if ex.expected_decision not in valid_decisions:
-            logger.error(f"Row {idx} has invalid decision: {ex.expected_decision}")
+        if not ex.expected_decision or ex.expected_decision not in valid_decisions:
+            logger.error(f"Row {idx} has invalid or unpopulated decision: '{ex.expected_decision}'")
             return False
         if not ex.human_verified:
-            logger.error(f"Row {idx} marked not human_verified.")
+            logger.error(f"Row {idx} ({ex.id}) is not marked human_verified=True.")
             return False
 
         intents_seen.add(ex.intent)
         decisions_seen.add(ex.expected_decision)
 
-    print("[PASS] Schema Integrity: All fields present, typed, and human-verified.")
+    print(f"[PASS] Schema Integrity & Uniqueness: All {n} records unique, typed, and human-verified.")
 
     # 3. Intent Coverage Check
     missing_intents = set(INTENTS) - intents_seen

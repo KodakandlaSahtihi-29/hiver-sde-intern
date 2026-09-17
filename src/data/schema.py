@@ -27,10 +27,16 @@ class GoldenExample(BaseModel):
     conversation_id: str
     customer_message: str
     historical_reply: Optional[str] = None
-    intent: str
-    expected_decision: str  # 'AUTO_HANDLE' or 'ESCALATE_TO_HUMAN'
-    review_notes: str
-    human_verified: bool = True
+    proposed_intent: Optional[str] = None
+    proposed_decision: Optional[str] = None
+    intent: str  # Final verified intent
+    expected_decision: str  # Final verified decision: 'AUTO_HANDLE' or 'ESCALATE_TO_HUMAN'
+    reviewer_notes: str = ""
+    human_verified: bool = False
+
+    @property
+    def review_notes(self) -> str:
+        return self.reviewer_notes
 
 
 class RetrievedEvidence(BaseModel):
