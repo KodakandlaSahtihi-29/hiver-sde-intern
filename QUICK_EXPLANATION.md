@@ -62,10 +62,10 @@ Using `scripts/create_golden_candidates.py`, we extracted 220 candidate tweets f
 - **Intent**: Accuracy (68.0%), Macro F1 (62.46%), Weighted F1 (70.51%), per-intent precision/recall/F1.
 - **Escalation**: Accuracy (84.5%), Human Escalation Recall (78.05%), Auto-Handle F1 (89.84%).
 - **Retrieval**: Mean Top-1 Cosine Similarity (0.3578), Coverage at threshold (99.5%), Intent Concordance @ 1 (43.5%).
-- **Reply Quality Rubric**: 1–5 scale evaluating Relevance (4.11), Groundedness (4.65), Tone (4.18), Escalation (4.68), Overall (4.40).
+- **Reply Quality Rubric**: 1–5 scale evaluating Relevance (2.84), Groundedness (4.19), Tone (4.07), Escalation (3.41), Overall (3.63) via live Gemini 3.1 Flash Lite (deterministic fallback baseline: 4.40).
 
 ### 14. How does LLM-as-a-judge work?
-In `src/evaluation/judge.py`, the judge evaluates each reply across 4 dimensions on a 1–5 scale. It runs via Gemini 1.5 Flash when an API key is present, and falls back to a deterministic rule-based rubric checking keyword overlap, absence of forbidden hallucinated phrases, empathy markers, and escalation alignment. In our offline test run, the deterministic fallback scored 4.40 / 5.0.
+In `src/evaluation/judge.py`, the judge evaluates each reply across 4 dimensions on a 1–5 scale (Relevance, Groundedness, Tone & Brand Voice, Escalation Appropriateness). It runs live via Google Gemini (`gemini-3.1-flash-lite`) when `GEMINI_API_KEY` is present, caching results in `results/judge_cache.json`. When run offline without a key, it seamlessly falls back to a deterministic rule-based rubric checking keyword overlap, absence of forbidden hallucinated phrases, empathy markers, and escalation alignment. Across all 200 golden examples, the real Gemini judge scored **3.63 / 5.0** (Relevance: 2.84, Groundedness: 4.19, Tone: 4.07, Escalation: 3.41), whereas the deterministic fallback scored **4.40 / 5.0**.
 
 ### 15. What is our headline metric?
 **Intent Macro F1 = 0.6246 (62.46%), Intent Accuracy = 68.00%, and Escalation Accuracy = 84.50%** (outperforming the majority baseline of 22.0% and weak-label baseline of 52.5%, while detecting 78.05% of human escalations compared to 0.0% and 2.44%).

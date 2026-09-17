@@ -46,9 +46,19 @@ Respond ONLY with valid JSON in this format:
 class ReplyJudge:
     """Evaluates agent responses using an LLM or deterministic rule rubric."""
 
-    def __init__(self):
+    def __init__(self, model_name: str = "gemini-3.1-flash-lite", cache_path: Optional[str] = "results/judge_cache.json"):
         self.api_key = os.getenv("GEMINI_API_KEY") or os.getenv("OPENAI_API_KEY")
         self.provider = os.getenv("LLM_PROVIDER", "gemini" if os.getenv("GEMINI_API_KEY") else "deterministic")
+        self.model_name = os.getenv("GEMINI_MODEL", model_name)
+        self.cache_path = cache_path
+        self.cache: Dict[str, Any] = {}
+        if self.cache_path and os.path.exists(self.cache_path):
+            try:
+                with open(self.cache_path, "r", encoding="utf-8") as f:
+                    self.cache = json.load(f)
+            except Exception:
+                self.cache = {}
+        self._last_call_time = 0.0
 
     def evaluate_reply(
         self,
@@ -57,17 +67,17 @@ class ReplyJudge:
         decision: str,
         reason: str,
         reply: str,
-        expected_decision: Optional[str] = None
+        expected_decision: Optional[str] = None,
+        cache_key: Optional[str] = None
     ) -> Dict[str, Any]:
         """Evaluates a single reply and returns dimensional scores (1-5)."""
-        # If API key is available, attempt LLM call
-        if self.api_key and self.provider == "gemini":
-            try:
-                return self._evaluate_with_llm(customer_message, intent, decision, reason, reply)
-            except Exception as e:
-                logger.warning(f"Judge LLM API failed ({e}), using deterministic evaluation rubric.")
+        # If provider is gemini, call the actual LLM judge without falling back to deterministic
+        if self.provider == "gemini":
+            if not self.api_key:
+                raise RuntimeError("GEMINI_API_KEY is not set. Cannot run LLM judge without API key.")
+            return self._evaluate_with_llm(customer_message, intent, decision, reason, reply, cache_key=cache_key)
 
-        # Deterministic rule-based judge rubric (reproducible, zero-cost, transparent)
+        # Deterministic rule-based judge rubric (only when provider is explicitly deterministic)
         return self._evaluate_deterministic(customer_message, intent, decision, reason, reply, expected_decision)
 
     def _evaluate_deterministic(
@@ -143,10 +153,21 @@ class ReplyJudge:
         intent: str,
         decision: str,
         reason: str,
-        reply: str
+        reply: str,
+        cache_key: Optional[str] = None
     ) -> Dict[str, Any]:
-        """Calls Gemini API for LLM-as-a-judge scoring."""
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={self.api_key}"
+        """Calls Gemini API for LLM-as-a-judge scoring with exponential backoff on transient errors."""
+        import time
+
+        if cache_key and cache_key in self.cache:
+            return self.cache[cache_key]
+
+        # Rate limiting: ensure at least 3.1s between consecutive calls to stay under 20 RPM free tier limit
+        elapsed = time.time() - self._last_call_time
+        if elapsed < 3.1:
+            time.sleep(3.1 - elapsed)
+
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model_name}:generateContent?key={self.api_key}"
         prompt = JUDGE_RUBRIC_PROMPT.format(
             customer_message=customer_message,
             intent=intent,
@@ -158,15 +179,54 @@ class ReplyJudge:
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": 0.1, "responseMimeType": "application/json"}
         }
-        resp = requests.post(url, json=payload, timeout=15)
-        if resp.status_code == 200:
-            data = resp.json()
-            raw_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-            parsed = json.loads(raw_text)
-            parsed["judge_method"] = "llm_gemini_flash"
-            parsed["overall"] = round(
-                (parsed["relevance"] + parsed["groundedness"] + parsed["tone"] + parsed["escalation"]) / 4.0, 2
-            )
-            return parsed
 
-        raise RuntimeError(f"Judge LLM failed with status {resp.status_code}")
+        max_retries = 5
+        last_error = ""
+
+        for attempt in range(max_retries):
+            try:
+                self._last_call_time = time.time()
+                resp = requests.post(url, json=payload, timeout=25)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    if "candidates" not in data or not data["candidates"]:
+                        raise ValueError(f"No candidates returned: {data}")
+                    raw_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+                    # Strip any markdown code fences if present
+                    if raw_text.startswith("```"):
+                        raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
+                        raw_text = re.sub(r"\s*```$", "", raw_text)
+                    parsed = json.loads(raw_text)
+                    parsed["judge_method"] = f"llm_{self.model_name.replace('.', '_').replace('-', '_')}"
+                    parsed["overall"] = round(
+                        (float(parsed["relevance"]) + float(parsed["groundedness"]) + float(parsed["tone"]) + float(parsed["escalation"])) / 4.0, 2
+                    )
+                    if cache_key:
+                        self.cache[cache_key] = parsed
+                        if self.cache_path:
+                            try:
+                                with open(self.cache_path, "w", encoding="utf-8") as f:
+                                    json.dump(self.cache, f, indent=2)
+                            except Exception:
+                                pass
+                    return parsed
+                elif resp.status_code in [429, 503, 500]:
+                    wait_time = (2 ** attempt) + 2
+                    # Try to parse exact retry-after seconds if given in error message
+                    err_msg = resp.text
+                    m = re.search(r"retry in ([\d\.]+)s", err_msg)
+                    if m:
+                        wait_time = max(wait_time, float(m.group(1)) + 1.0)
+                    logger.warning(f"Gemini API returned {resp.status_code}. Retrying in {wait_time:.1f}s (attempt {attempt+1}/{max_retries})...")
+                    time.sleep(wait_time)
+                    last_error = f"HTTP {resp.status_code}: {resp.text}"
+                else:
+                    last_error = f"HTTP {resp.status_code}: {resp.text}"
+                    break
+            except Exception as e:
+                wait_time = (2 ** attempt) + 2
+                logger.warning(f"Request exception: {e}. Retrying in {wait_time}s...")
+                time.sleep(wait_time)
+                last_error = str(e)
+
+        raise RuntimeError(f"Judge LLM failed after {max_retries} attempts: {last_error}")

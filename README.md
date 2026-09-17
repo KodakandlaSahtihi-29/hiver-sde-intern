@@ -86,15 +86,15 @@ pytest tests/ -v
 
 All numbers are measured directly from execution against the 200-sample human-verified golden set:
 
-| Model / System | Intent Accuracy | Intent Macro F1 | Intent Weighted F1 | Escalation Accuracy | Escalate Recall (Human) | Auto-Handle F1 | Retrieval Concordance | Judge Score (Deterministic Fallback) |
+| Model / System | Intent Accuracy | Intent Macro F1 | Intent Weighted F1 | Escalation Accuracy | Escalate Recall (Human) | Auto-Handle F1 | Retrieval Concordance | Judge Score (LLM: Gemini Flash) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Baseline 1 (Majority Class)** | 0.2200 | 0.0601 | 0.0793 | 0.7950 | 0.0000 | 0.8858 | N/A | N/A |
 | **Baseline 2 (TF-IDF + LogReg on Weak Labels)** | 0.5250 | 0.3886 | 0.5345 | 0.7950 | 0.0244 | 0.8852 | N/A | N/A |
-| **Proposed AI Support Agent** | **0.6800** | **0.6246** | **0.7051** | **0.8450** | **0.7805** | **0.8984** | **43.5%** | **4.40 / 5.0** |
+| **Proposed AI Support Agent** | **0.6800** | **0.6246** | **0.7051** | **0.8450** | **0.7805** | **0.8984** | **43.5%** | **3.63 / 5.0** |
 
 *Note on Baseline 2: Trained exclusively on the 3,499 training corpus using weak/heuristic pseudo-labels derived from keyword matching. The 200 golden evaluation examples were strictly held out and never seen during training.*
 
-*Note on Quality Score: Evaluated using the deterministic rule-anchored rubric because no remote LLM API key was provided in the offline evaluation environment. The codebase includes the full LLM-as-a-Judge implementation (`src/evaluation/judge.py`), which calls Gemini 1.5 Flash when `GEMINI_API_KEY` is set.*
+*Note on Quality Score: Evaluated live across all 200 golden examples using the Google Gemini LLM-as-a-Judge (`gemini-3.1-flash-lite`) via `src/evaluation/judge.py` with zero fabrication. The rubric evaluates Relevance (2.84), Groundedness (4.19), Tone & Brand Voice (4.07), and Escalation Appropriateness (3.41). If `GEMINI_API_KEY` is omitted, the harness seamlessly falls back to the transparent deterministic rubric (which scored 4.40 / 5.0) ensuring offline reproducibility.*
 
 ### Per-Intent Performance (Proposed AI Agent):
 | Intent Category | Precision | Recall | F1 Score | Support |
@@ -116,7 +116,7 @@ Why this number is misleading without context:
 1. **Macro F1 penalizes low-frequency minor classes**: The low score on `General_Product_Inquiry` (F1: 0.2791, support: 15) pulls down Macro F1, whereas high-volume Battery (F1: 0.8182) and Security (F1: 0.7778) perform strongly. Weighted F1 is 0.7051.
 2. **Sample Size Margin of Error**: With $N=200$, the 95% confidence interval is $\pm 6.5\%$ on 68.0% accuracy (true population accuracy lies between 61.5% and 74.5%).
 3. **Escalation Accuracy (84.5%) masks 9 false negatives**: The trivial baseline gets 79.5% escalation accuracy by *never escalating*. Our agent achieves 78.05% human escalation recall (detecting 32/41 high-risk cases), but 9 un-escalated cases slip through.
-4. **Retrieval Concordance is 43.5%**: In 56.5% of queries, vector search retrieved an exemplar from a different intent bucket, showing that short tweets suffer from lexical overlap drift even when overall response tone scores 4.40/5.0.
+4. **Retrieval Concordance is 43.5%**: In 56.5% of queries, vector search retrieved an exemplar from a different intent bucket, showing that short tweets suffer from lexical overlap drift even when overall response tone scores 4.07/5.0 and groundedness scores 4.19/5.0.
 
 *(See full breakdown in [reports/report.md](reports/report.md))*.
 

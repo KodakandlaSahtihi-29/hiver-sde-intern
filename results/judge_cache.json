@@ -1,0 +1,1802 @@
+{
+  "gold_001": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The response is professional and follows standard support protocols, though it could have provided immediate troubleshooting steps before requesting a DM.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_002": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any immediate troubleshooting steps for a critical device failure, opting instead for a generic redirection that ignores the customer's urgent technical distress.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_003": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "While the tone is professional and the response is grounded, the agent failed to provide immediate self-service troubleshooting steps, opting instead for a manual DM process that contradicts the 'AUTO_HANDLE' decision.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_004": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 1,
+    "rationale": "The agent provided a canned response that completely ignored the customer's report of data loss, instead asking about device speed and directing them to a DM link.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.75
+  },
+  "gold_005": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The agent acknowledges the issue and offers a path to support, but fails to provide any immediate self-service troubleshooting steps despite the intent being classified as auto-handle.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.75
+  },
+  "gold_006": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 5,
+    "escalation": 2,
+    "rationale": "While the tone is professional and the response is grounded, the agent failed to provide any immediate troubleshooting steps for a known software issue, opting for an unnecessary escalation to DM.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_007": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "While the tone is professional, the agent failed to provide any immediate troubleshooting steps for a potential security bug, opting instead for a generic DM redirection that delays resolution.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_008": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The reply is overly generic and fails to address the specific context of the iOS Beta program, opting for a vague DM request instead of providing relevant troubleshooting or feedback channels.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_009": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The reply acknowledges the issue but fails to provide any immediate self-service troubleshooting steps, instead immediately redirecting the user to a support link.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.75
+  },
+  "gold_010": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The agent ignores the customer's explicit mention of needing to reset their phone multiple times by asking what issues they are experiencing, which feels dismissive and repetitive.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_011": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent provided a canned response that incorrectly identified the issue as a Safari problem rather than a hardware/keyboard connectivity issue, rendering the reply irrelevant and confusing.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.0
+  },
+  "gold_012": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "While the tone is professional, the agent failed to provide immediate troubleshooting steps for a frozen screen and instead deflected to a DM, which is an unnecessary escalation for a common technical issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_013": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The response acknowledges the issue and provides a path for support, but it fails to provide any immediate, actionable troubleshooting steps for the customer's specific complaint.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_014": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to provide immediate troubleshooting steps for a known post-update issue, instead opting for a generic DM redirection that delays resolution.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_015": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any actionable troubleshooting steps for a device that is unresponsive, opting instead to deflect the customer to a DM channel despite the issue being a well-documented software state.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_016": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The agent correctly identifies the need for device information, but the response is slightly disjointed due to the awkward placement of the 'Recommended steps' header.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.25
+  },
+  "gold_017": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The response is professional and appropriately moves the conversation to a private channel for troubleshooting, though it could have provided one immediate self-service tip to better match the intent.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_018": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The response is overly generic, lacks specific troubleshooting steps for the reported issue, and uses an awkward opening phrase that does not address the customer's technical problem.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_019": {
+    "relevance": 1,
+    "groundedness": 1,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent provided a completely irrelevant response regarding headphones for a customer reporting an iOS software update issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.75
+  },
+  "gold_020": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The agent acknowledges the issue but fails to provide any actionable troubleshooting steps, instead asking a redundant question that ignores the customer's stated problem.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_021": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The agent maintains a professional tone and follows standard troubleshooting protocols, though the response could have been more proactive by providing immediate basic troubleshooting steps alongside the request for device details.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_022": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "While the tone is professional and empathetic, the agent failed to provide any immediate troubleshooting steps, opting for an unnecessary escalation to DM for issues that could have been addressed with standard self-service guidance.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_023": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The reply is polite and grounded, but it fails to provide immediate troubleshooting steps, instead opting for a generic request for more information via DM.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.75
+  },
+  "gold_024": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 5,
+    "escalation": 2,
+    "rationale": "While the tone is professional and empathetic, the agent failed to provide any immediate self-service troubleshooting steps, unnecessarily forcing a transition to a DM channel for a known software issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_025": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent failed to address the user's general complaint about bugs and performance, instead hallucinating a specific passcode issue that the customer never mentioned.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_026": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent ignored the user's specific complaint about iOS 11 performance issues and incorrectly offered login assistance, failing to address the actual technical frustration expressed.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_027": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 3,
+    "escalation": 4,
+    "rationale": "The response provides a relevant support link, but the tone is slightly robotic and repetitive, failing to acknowledge the customer's emotional frustration.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.75
+  },
+  "gold_028": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response provides the correct support documentation for the user's query and maintains a professional tone, though it could have been more helpful by explicitly stating the path in Settings.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_029": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent acknowledges the issue but fails to provide any actionable troubleshooting steps, rendering the response unhelpful despite the professional tone.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_030": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent acknowledges the frustration and provides a clear path for support, though it fails to provide immediate self-service troubleshooting steps as suggested by the intent classification.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_031": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent completely ignored the customer's mention of an iOS update notification and incorrectly pivoted to a troubleshooting script regarding iCloud photos.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.0
+  },
+  "gold_032": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The agent failed to acknowledge the specific device model provided in the query, making the follow-up question redundant and frustrating for the user.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_033": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The response ignores the customer's frustration regarding a specific update-related bug and provides generic battery tips instead of addressing the potential software performance issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_034": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent failed to provide the standard troubleshooting steps for the 'Change with Buttons' setting and instead deflected the user to a DM, which is an unnecessary escalation for a common, well-documented software setting issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.5
+  },
+  "gold_035": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The reply correctly directs the user to official support channels for a technical issue, though it fails to acknowledge the specific concern regarding battery performance in iOS 11.1.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_036": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The reply fails to provide any actual troubleshooting steps for the reported notification issue, instead immediately deflecting to a DM without addressing the user's specific technical concern.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_037": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 2,
+    "escalation": 1,
+    "rationale": "The agent provided completely irrelevant information regarding a watch update instead of addressing the customer's reported iPhone restart issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.5
+  },
+  "gold_038": {
+    "relevance": 1,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The agent completely ignored the customer's specific question about turning off cellular data and instead asked an irrelevant question about iMessage.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.5
+  },
+  "gold_039": {
+    "relevance": 1,
+    "groundedness": 1,
+    "tone": 3,
+    "escalation": 1,
+    "rationale": "The agent provided completely irrelevant troubleshooting steps regarding Apple Music for a cellular signal issue caused by an OS update.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.5
+  },
+  "gold_040": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The reply fails to address the specific technical issue reported by the user, instead providing generic links to support channels without offering troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_041": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The reply fails to provide any immediate troubleshooting steps or relevant context for the battery issue, instead forcing the customer into a DM flow without addressing the specific complaint.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_042": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identifies the issue and provides a standard, helpful troubleshooting step while maintaining a professional and empathetic tone.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_043": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent acknowledges the issue but fails to provide immediate self-service troubleshooting steps, instead unnecessarily redirecting the user to a DM for basic device information.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_044": {
+    "relevance": 2,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent ignores the specific technical complaint about battery performance and pivots to an irrelevant inquiry about an Apple Store experience, failing to provide actionable troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.25
+  },
+  "gold_045": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The agent acknowledges the issue but asks an irrelevant question about an outdated iOS version, failing to provide actionable troubleshooting steps for the current battery drain.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_046": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately acknowledges the issue and initiates a standard diagnostic workflow while maintaining a professional and helpful tone.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_047": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately acknowledges the concern, maintains a professional tone, and correctly directs the user to a secure channel for further diagnostics.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_048": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The reply is polite and follows standard support protocols, but it fails to address the specific reports of freezing and app crashes, focusing only on battery performance.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_049": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The agent correctly identified that the user's behavior was a feature of iOS 11 rather than a bug, provided the accurate support documentation, and handled the query appropriately via self-service.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_050": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent failed to address the battery drain issue and hallucinated a connection to iTunes, rendering the response irrelevant and confusing.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.0
+  },
+  "gold_051": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent failed to acknowledge the specific device mentioned in the query, forcing the customer to repeat information already provided.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.75
+  },
+  "gold_052": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent acknowledges the frustration and provides a clear, professional path to resolution via DM, which is the standard procedure for handling specific technical complaints on social media.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_053": {
+    "relevance": 1,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent provided a generic marketing link about new features instead of addressing the specific customer complaint regarding battery drainage, failing to provide relevant troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.25
+  },
+  "gold_054": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 4,
+    "rationale": "The reply is disjointed and confusingly phrased, failing to provide clear, actionable troubleshooting steps despite correctly identifying the issue as a software concern.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_055": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The response is polite and follows standard troubleshooting steps, but it fails to provide immediate actionable advice for the specific battery drain issue reported.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.75
+  },
+  "gold_056": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to address the specific question about the release notes and prematurely escalated a simple inquiry that could have been handled with a link to official support documentation.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_057": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The reply is polite and grounded in standard support procedures, but it fails to address the specific context of the iOS 11 battery drain issue and prematurely requests a DM instead of providing immediate self-service troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_058": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The response acknowledges the issue but fails to address the app crashes and reboots, focusing only on battery performance while requesting information that should be handled via a more direct support channel.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.75
+  },
+  "gold_059": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The agent suggests an update to fix a battery issue, but fails to address the specific symptom of the phone draining while plugged in, which suggests a hardware or charging issue rather than just software optimization.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_060": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent acknowledges the issue and provides a professional, secure path for personalized troubleshooting, which is appropriate for battery performance concerns.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_061": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is professional and appropriately directs the user to a private channel for personalized troubleshooting, which is standard practice for performance-related complaints.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_062": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent ignores the specific question about downgrading iOS and provides a generic, repetitive response that forces the user to repeat information already provided in the initial query.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_063": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent acknowledges the issue and provides a secure channel for further support, though asking for clarification on the battery issue after the customer already specified 'draining so quick' is slightly redundant.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_064": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is professional and appropriately directs the user to a private channel for troubleshooting, though the inclusion of a redundant sentence slightly impacts conciseness.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_065": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The agent acknowledges the performance issue and provides a clear, professional path for further troubleshooting, though it could have offered immediate self-service tips before requesting a DM.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_066": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The agent correctly identifies the need for troubleshooting, but asking for the iOS version is redundant since the customer explicitly stated they are on iOS 11.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.25
+  },
+  "gold_067": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent acknowledges the frustration, maintains a professional tone, and correctly initiates a diagnostic workflow via a secure channel.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_068": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The agent appropriately addresses the battery concern and moves the conversation to a private channel for troubleshooting, though the reply contains a repetitive introductory phrase.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_069": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is professional and provides the correct self-service resource for battery issues, though it could have been slightly more personalized by acknowledging the specific device and iOS version mentioned.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_070": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The agent maintains a professional and empathetic tone while correctly directing the user to a private channel for personalized diagnostic support, though it could have provided one immediate self-service tip.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_071": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "While the tone is professional, the agent failed to provide the requested self-service diagnostic steps and instead prematurely pushed for a DM escalation.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_072": {
+    "relevance": 2,
+    "groundedness": 1,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent suggests an obsolete iOS version (11.0.2) which is a hallucination, and fails to provide actionable troubleshooting steps despite the customer already performing a restore.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.0
+  },
+  "gold_073": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent acknowledges the issue and asks for necessary device information, though it fails to address the user's specific frustration regarding iOS 11 performance or the impossibility of downgrading.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_074": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The response acknowledges the issue and provides a clear path for further support, though it lacks immediate troubleshooting steps for the user's specific complaints.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_075": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The response is professional and follows standard support protocols, but it is somewhat generic given the user reported multiple system-wide issues beyond just battery performance.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.25
+  },
+  "gold_076": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately acknowledged the customer's frustration, maintained a professional tone, and correctly routed the issue to a private channel for secure diagnostic troubleshooting.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_077": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The reply provides a relevant resource for battery optimization but fails to address the customer's specific request regarding downgrading the iOS version.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_078": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent completely ignored the customer's battery drain issue and hallucinated a 'photo issue' that was never mentioned.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.0
+  },
+  "gold_079": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent's response is largely irrelevant because it mentions calendar issues, which were not part of the customer's complaint about iOS 11 performance and battery drain.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_080": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent acknowledges the specific issue, maintains a professional Apple-branded tone, and correctly directs the user to a private channel for secure troubleshooting.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_081": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "While the tone is professional, the agent failed to provide any immediate self-service troubleshooting steps for a common battery issue, opting for an unnecessary escalation to DM.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_082": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent ignored the customer's specific report of Bluetooth failure, incorrectly focused on battery performance, and provided a vague escalation that failed to acknowledge the customer's frustration.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.5
+  },
+  "gold_083": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 4,
+    "rationale": "The agent ignores the customer's explicit statement that they are on iOS 11 by asking for the version, which makes the response feel robotic and unhelpful.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_084": {
+    "relevance": 1,
+    "groundedness": 1,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent provided an outdated and irrelevant software version (iOS 11) that does not address the user's specific audio connectivity issue, demonstrating a lack of technical accuracy.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.75
+  },
+  "gold_085": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any immediate troubleshooting steps for the reported issue and prematurely deflected the customer to a DM channel despite the intent being classified as a standard self-service issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_086": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to address the customer's specific questions about a fix timeline or reverting the iOS, opting for a generic social media deflection instead of providing standard troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_087": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any specific troubleshooting steps for the known issue and prematurely pushed for a DM transition instead of offering immediate self-service guidance.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_088": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The reply is grounded and professional, but it is slightly disjointed and fails to address the specific speakerphone and Bluetooth issues mentioned by the customer.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_089": {
+    "relevance": 1,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The agent completely ignored the reported Wi-Fi issue and pivoted to battery life, failing to address the customer's specific technical problem.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.5
+  },
+  "gold_090": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The reply acknowledges the issue and provides basic troubleshooting, but it is overly brief and forces a transition to DM rather than providing immediate, actionable steps for a known software-related connectivity issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_091": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any initial troubleshooting steps for a hardware-related issue, opting for an immediate escalation to DM instead of offering standard self-service guidance.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_092": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The agent provides a relevant, grounded troubleshooting resource for connectivity issues, though the tone is slightly repetitive and could be more empathetic toward the customer's frustration.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_093": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 2,
+    "escalation": 3,
+    "rationale": "The agent provided an irrelevant response addressing Wi-Fi instead of the customer's specific question about Bluetooth, demonstrating a failure in intent recognition.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.0
+  },
+  "gold_094": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent completely ignored the customer's hardware issue regarding the speaker and instead hallucinated a problem with Apple Music Radio.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.0
+  },
+  "gold_095": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The agent failed to provide any immediate troubleshooting steps for the reported issue, instead opting to move the conversation to a private channel without addressing the customer's frustration.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_096": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any immediate troubleshooting steps for the reported crashes and instead deflected the user to a DM, which is inefficient for a known software issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_097": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent correctly initiates troubleshooting by gathering necessary device information, though the initial response is slightly generic and does not immediately address the specific Bluetooth control concern.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_098": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent acknowledges the issue and attempts to narrow down the scope, but fails to provide any immediate troubleshooting steps or actionable advice.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_099": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The agent correctly identifies the intended behavior of the Control Center toggle but provides a somewhat generic response that doesn't fully acknowledge the user's frustration regarding the UI's perceived deception.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.25
+  },
+  "gold_100": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human intervention due to low confidence and maintained a professional, empathetic tone while acknowledging the customer's specific hardware issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_101": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 3,
+    "escalation": 5,
+    "rationale": "The response provides a relevant support link, but the tone is overly robotic and fails to acknowledge the customer's frustration or the specific nature of the WiFi issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_102": {
+    "relevance": 1,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any actionable troubleshooting steps and instead asked a redundant question about the issue already described by the customer.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.25
+  },
+  "gold_103": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent provided a generic, irrelevant response that ignored the specific question about WiFi behavior and instead treated it as a connectivity troubleshooting issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.0
+  },
+  "gold_104": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The agent correctly identifies that the behavior is intended, but the response is dismissive and fails to explain why the Control Center toggle functions as it does, leading to a poor customer experience.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_105": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The agent ignores the aggressive tone and the specific hardware issue, providing a generic response that misidentifies the problem as a connectivity issue rather than a speaker hardware defect.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_106": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 4,
+    "rationale": "The agent fails to address the specific behavior of WiFi turning itself on, instead pivoting to an irrelevant request about iOS versioning.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_107": {
+    "relevance": 2,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The agent suggests an update that is likely already installed or irrelevant to the specific hardware limitations of an iPad mini 3, failing to provide standard troubleshooting steps like network settings reset.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.5
+  },
+  "gold_108": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified that the user's confusion stemmed from the iOS 11 Control Center behavior change and provided the official, accurate support resource to resolve the issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_109": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent failed to address the Bluetooth issue, hallucinated a battery problem, and provided a generic link instead of relevant troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.0
+  },
+  "gold_110": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent acknowledges the issue and initiates standard troubleshooting, but the response is slightly repetitive and lacks specific initial steps to resolve the connectivity problem.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_111": {
+    "relevance": 1,
+    "groundedness": 3,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent ignored the specific details provided by the customer and asked a redundant question that had already been answered, failing to provide any actionable troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.25
+  },
+  "gold_112": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The agent ignores the specific hardware/display symptom described and instead incorrectly frames the issue as a connectivity problem, failing to address the screen malfunction.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_113": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The response provides a relevant, grounded resource for the issue, though the tone is slightly generic and could benefit from more direct acknowledgment of the customer's frustration.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_114": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The agent correctly identifies that the user is likely misunderstanding the Control Center behavior versus Settings, providing the accurate support documentation to resolve the issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_115": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human intervention due to low confidence and maintained a professional, empathetic tone while explaining the next steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_116": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly prioritized a human connection due to low confidence, though the reply lacked immediate troubleshooting steps for the common accessory error.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_117": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately acknowledged the issue and correctly escalated to a human specialist given the low confidence score and the technical nature of the device failure.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_118": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human intervention due to the technical nature of the issue and maintained a professional, empathetic tone throughout the brief response.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_119": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human intervention due to low confidence and provided a professional, empathetic transition to a specialist.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_120": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human intervention regarding sensitive data privacy concerns and maintained a professional, empathetic tone throughout the handoff.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_121": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human intervention regarding a potential phishing link, though the response was generic and did not provide immediate safety advice.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_122": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "While the tone is professional, the agent failed to acknowledge the customer's frustration regarding the store experience and prematurely pushed for a DM instead of addressing the specific policy concern about replacement parts.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_123": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 3,
+    "rationale": "The reply is professional and follows protocol, but it fails to acknowledge the specific nature of the user's frustration, opting for a generic escalation instead of providing immediate troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_124": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human intervention regarding potential phishing and provided a professional, empathetic transition to a specialist.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_125": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately acknowledged the frustration and correctly escalated the issue to a human specialist given the low confidence score and the nature of the technical complaint.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_126": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The reply is professional and follows standard escalation protocols, though it is a generic response to a vague user complaint that could have been addressed with basic troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.25
+  },
+  "gold_127": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human intervention due to low confidence and maintained a professional, empathetic tone while setting expectations for the transfer.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_128": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The agent maintains a professional tone and follows protocol for low-confidence intents, though the response is generic and does not acknowledge the specific technical nature of the broken link.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.25
+  },
+  "gold_129": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human intervention due to low confidence, and while the response is generic, it maintains a professional tone and avoids speculation about the battery issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_130": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the low confidence in the intent and escalated to a human, maintaining a professional tone despite the user's query regarding a legacy third-party app.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_131": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 2,
+    "rationale": "While the tone is professional and the escalation is safe, the agent failed to acknowledge the customer's specific feedback, making the response feel overly robotic and dismissive of the user's input.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.75
+  },
+  "gold_132": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately acknowledged the issue and correctly escalated to a human specialist given the low confidence score and the technical nature of the macOS performance complaint.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_133": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for human verification for a hardware replacement request and maintained a professional, empathetic tone throughout the transition.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_134": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 2,
+    "escalation": 1,
+    "rationale": "The agent provided a canned response about carrier locks that is completely irrelevant to the customer's specific question regarding data loss and troubleshooting protocols for hardware issues.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.5
+  },
+  "gold_135": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately escalated the issue due to low confidence, though the response is generic and does not acknowledge the specific technical issue mentioned by the customer.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_136": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "While the escalation was appropriate given the low confidence score, the agent failed to acknowledge the customer's specific accessibility concern or provide any immediate troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_137": {
+    "relevance": 3,
+    "groundedness": 2,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "While the tone is professional, the agent references an extremely outdated iOS version, which is not grounded in current support reality and fails to address the user's immediate need for troubleshooting.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_138": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately acknowledged the customer's frustration and correctly escalated the issue to a human specialist, as the query involved a complex service complaint that automation cannot resolve.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_139": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "While the tone is professional and the escalation is safe, the agent failed to provide any immediate troubleshooting steps or acknowledgment of the specific technical issue, resulting in a poor user experience.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_140": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent maintains a professional tone and correctly identifies the need for human intervention, though the response lacks immediate troubleshooting steps or acknowledgment of the specific technical issue.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_141": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is professional and correctly identifies that account-related issues require secure, authenticated channels, though it could have briefly acknowledged the frustration caused by the previous troubleshooting step.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_142": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response accurately addresses the security-sensitive nature of the issue, provides the correct official recovery resource, and appropriately escalates to human support.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_143": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent incorrectly categorized a technical iCloud sync issue as an account security/credential problem, leading to an unnecessary escalation and irrelevant troubleshooting advice.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_144": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 1,
+    "rationale": "The agent completely misunderstood the user's request regarding photo management, providing irrelevant account recovery advice instead of explaining how to manage iCloud Photos settings.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.75
+  },
+  "gold_145": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified that iCloud email addresses cannot be moved between Apple IDs and appropriately directed the user to secure channels for further assistance.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_146": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identifies the need for secure escalation, though the reply is slightly misaligned as the user's issue is about locating synced photos rather than a credential recovery problem.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_147": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 5,
+    "rationale": "The agent correctly escalated the issue, but the response was slightly generic and did not specifically address the user's confusion regarding iCloud sync behavior.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.25
+  },
+  "gold_148": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is professional and correctly identifies the need for secure verification, though it could have briefly explained that 2FA codes appearing on the same device is a known behavior.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_149": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is accurate, maintains a professional Apple-aligned tone, provides the correct self-service resource, and appropriately directs the user to human support for security-sensitive account recovery.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_150": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately acknowledged the complexity of the issue and correctly escalated to a human specialist to ensure secure verification and resolution.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_151": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent ignores the critical nature of the battery failure and the user's 2FA dependency, instead asking for information already provided in the prompt and failing to offer immediate troubleshooting or escalation.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_152": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the security sensitivity, provided the official recovery resource, and appropriately directed the user to human support.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_153": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the security limitations of automated support, provided the appropriate official recovery resource, and maintained a professional, empathetic tone.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_154": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is highly professional, accurately directs the user to the official recovery portal, and correctly identifies that account security issues require human intervention or secure self-service protocols.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_155": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the security constraints, provided the official recovery resource, and maintained a professional, empathetic tone appropriate for Apple Support.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_156": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the security sensitivity of the issue, provided the appropriate official recovery resource, and routed the user to human support as required by security protocols.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_157": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 1,
+    "rationale": "The agent completely misidentified a technical software bug regarding Spotify metadata as an account security issue, leading to irrelevant advice and an unnecessary escalation.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.75
+  },
+  "gold_158": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the security constraints, provided the appropriate official recovery resource, and maintained a professional, empathetic tone while routing the user to human support.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_159": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any actual troubleshooting steps for the reported issue, instead immediately redirecting the user to a different support channel.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_160": {
+    "relevance": 1,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The agent failed to read the provided context, as the customer explicitly stated both the device model and the iOS version in their initial query.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_161": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent acknowledges the issue but fails to provide any immediate troubleshooting steps for a known software behavior, and the decision to auto-handle a reported bug without providing specific guidance is suboptimal.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_162": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent misidentified a technical sync issue as an account security/credential problem, leading to irrelevant advice about iforgot.apple.com instead of troubleshooting the reported iCloud sync behavior.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_163": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the need for secure human intervention and provided appropriate resources, though it could have specifically acknowledged the technical loading issue mentioned by the user.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_164": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent appropriately acknowledged the frustration and correctly escalated the issue to a human specialist due to the low confidence score and the need for account-specific troubleshooting.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_165": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The agent correctly identifies the need for secure escalation but fails to address the customer's specific technical issue regarding iTunes backups, instead pivoting to an account recovery process that is not directly relevant to the user's complaint.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_166": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is accurate, professional, and correctly directs the user to secure, official channels for sensitive account recovery issues.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_167": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is highly professional, accurately directs the user to the official recovery portal, and correctly identifies the need for human intervention for security-sensitive account issues.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_168": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response is professional and appropriately directs the user to secure channels, though it could have explicitly advised against clicking links in unsolicited emails to better address the user's specific concern.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_169": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent ignores the customer's explicit statement that they have already shut down the phone multiple times, making the follow-up question redundant and unhelpful.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_170": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the sensitivity of account access issues, provided the official recovery resource, and appropriately directed the user to human support.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_171": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent incorrectly identified a technical issue regarding iCloud photo synchronization as an account security/credential issue, leading to irrelevant advice and an unnecessary escalation.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.25
+  },
+  "gold_172": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 1,
+    "rationale": "The agent ignored the physical damage issue, provided an irrelevant response about battery performance, and failed to provide actionable guidance for a hardware replacement.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.75
+  },
+  "gold_173": {
+    "relevance": 1,
+    "groundedness": 1,
+    "tone": 3,
+    "escalation": 1,
+    "rationale": "The agent provided a canned response about song order that is completely irrelevant to the customer's specific question about iTunes Match and cloud storage.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.5
+  },
+  "gold_174": {
+    "relevance": 1,
+    "groundedness": 1,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent suggests using the App Store to fix a device stuck in recovery mode, which is technically incorrect and ignores the user's explicit statement that iTunes is already failing.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.75
+  },
+  "gold_175": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The response provides a relevant and grounded troubleshooting step for missing music, though it could have been slightly more comprehensive by mentioning local sync as well.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_176": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The agent appropriately initiates a secure support flow to investigate the billing discrepancy, though it could have been more helpful to provide a link to the subscription management page immediately.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_177": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 1,
+    "rationale": "The agent misidentified the intent as a billing issue, provided an irrelevant link, and failed to address the technical steps required to recover a disabled iPhone.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.75
+  },
+  "gold_178": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 4,
+    "rationale": "The response is professional and provides the correct self-service resource, though it could have been slightly more empathetic regarding the severity of the battery drain.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.5
+  },
+  "gold_179": {
+    "relevance": 2,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to address the technical troubleshooting context and incorrectly routed the user to a DM channel instead of providing relevant technical steps for iTunes.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_180": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 4,
+    "rationale": "The agent addresses the software issue but fails to acknowledge the specific battery-related symptoms mentioned by the customer, and the tone is slightly robotic.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_181": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 3,
+    "escalation": 2,
+    "rationale": "The agent failed to address the technical issue directly, instead providing a generic redirection link that forces the customer to restart their support journey.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_182": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 1,
+    "rationale": "The agent failed to answer a simple, well-documented compatibility question, opting for an unnecessary escalation that creates friction for the customer.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.0
+  },
+  "gold_183": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The response provides relevant links but is overly generic, fails to address the specific performance lag mentioned, and uses awkward phrasing that lacks the professional polish expected of Apple Support.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_184": {
+    "relevance": 1,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 1,
+    "rationale": "The agent misidentified a battery performance issue as a billing inquiry, leading to an irrelevant response and an unnecessary escalation.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_185": {
+    "relevance": 1,
+    "groundedness": 1,
+    "tone": 3,
+    "escalation": 1,
+    "rationale": "The agent provided an irrelevant link to iTunes support for a hardware battery issue and failed to offer any actual troubleshooting steps or correct guidance.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.5
+  },
+  "gold_186": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The reply acknowledges the issue and correctly routes the user to a private channel for further troubleshooting, though it lacks immediate actionable advice.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_187": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 4,
+    "rationale": "The agent acknowledges the issue and asks a clarifying question to troubleshoot, though it lacks immediate actionable self-service steps for a known cross-platform streaming discrepancy.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.0
+  },
+  "gold_188": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent provided a direct, helpful, and professional response with a relevant support link, correctly identifying that this is a standard troubleshooting issue suitable for self-service.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_189": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent ignores the specific technical issue regarding iTunes crashes and instead asks for device information that is irrelevant to a desktop software problem, failing to provide any actionable troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_190": {
+    "relevance": 4,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent acknowledges the frustration and provides a professional, standard path for troubleshooting via DM, which is appropriate for privacy-sensitive diagnostic data.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 4.75
+  },
+  "gold_191": {
+    "relevance": 1,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 1,
+    "rationale": "The agent incorrectly identified a hardware battery issue as a billing inquiry, leading to irrelevant advice and an unnecessary escalation.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_192": {
+    "relevance": 2,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any immediate troubleshooting steps for a common billing issue, opting for an unnecessary escalation to DM instead of addressing the customer's frustration with the self-service process.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.25
+  },
+  "gold_193": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the issue as a common post-update performance concern and provided the standard, grounded troubleshooting step of updating to the latest software version.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  },
+  "gold_194": {
+    "relevance": 2,
+    "groundedness": 3,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent failed to provide any immediate troubleshooting steps for the battery issue and prematurely deflected the conversation to DMs instead of addressing the customer's specific technical concern.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.75
+  },
+  "gold_195": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The response is professional and follows standard support protocols, but it fails to address the specific mention of aftermarket cable charging issues, opting for a generic DM redirection instead of providing immediate troubleshooting steps.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.75
+  },
+  "gold_196": {
+    "relevance": 3,
+    "groundedness": 5,
+    "tone": 4,
+    "escalation": 2,
+    "rationale": "The agent acknowledges the issue but fails to provide immediate self-service troubleshooting steps, opting for an unnecessary escalation to DM for a common performance inquiry.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_197": {
+    "relevance": 3,
+    "groundedness": 4,
+    "tone": 4,
+    "escalation": 3,
+    "rationale": "The agent failed to provide the direct, built-in method for checking battery health (Settings > Battery > Battery Health) and instead directed the user to a social media DM channel, which is an inefficient resolution path.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 3.5
+  },
+  "gold_198": {
+    "relevance": 1,
+    "groundedness": 3,
+    "tone": 2,
+    "escalation": 1,
+    "rationale": "The agent provided a generic troubleshooting step for sorting music that fails to address the customer's primary concerns regarding data loss and duplicate subscription charges.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 1.75
+  },
+  "gold_199": {
+    "relevance": 1,
+    "groundedness": 2,
+    "tone": 3,
+    "escalation": 3,
+    "rationale": "The agent completely ignored the battery issue and hallucinated a connection to iTunes, rendering the response irrelevant to the customer's query.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 2.25
+  },
+  "gold_200": {
+    "relevance": 5,
+    "groundedness": 5,
+    "tone": 5,
+    "escalation": 5,
+    "rationale": "The agent correctly identified the sensitive nature of the request, provided the official resolution channel, and maintained a professional, empathetic tone.",
+    "judge_method": "llm_gemini_3_1_flash_lite",
+    "overall": 5.0
+  }
+}

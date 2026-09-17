@@ -103,9 +103,11 @@ def run_evaluation(
     agent_intent_matches = []
     judge_scores = []
     full_eval_records = []
+    agent_preds = []
 
     for idx, ex in enumerate(golden_set):
         pred = agent.process_message(ex.customer_message)
+        agent_preds.append(pred)
         agent_pred_intents.append(pred.intent)
         agent_pred_decisions.append(pred.decision)
         agent_replies.append(pred.reply)
@@ -121,17 +123,29 @@ def run_evaluation(
             intent_match = (ev_intent == ex.intent)
         agent_intent_matches.append(intent_match)
 
-        # Quality scoring using judge rubric
-        j_score = judge.evaluate_reply(
+    logger.info(f"=== STEP 3b: EVALUATING REPLIES WITH JUDGE ({judge.provider}: {getattr(judge, 'model_name', 'rubric')}) ===")
+
+    for idx, ex in enumerate(golden_set):
+        pred = agent_preds[idx]
+        score = judge.evaluate_reply(
             customer_message=ex.customer_message,
             intent=pred.intent,
             decision=pred.decision,
             reason=pred.reason,
             reply=pred.reply,
-            expected_decision=ex.expected_decision
+            expected_decision=ex.expected_decision,
+            cache_key=ex.id
         )
-        judge_scores.append(j_score)
+        judge_scores.append(score)
+        if (idx + 1) % 10 == 0 or idx == 0 or idx == len(golden_set) - 1:
+            logger.info(
+                f"Judged {idx+1}/{len(golden_set)} ({ex.id}) -> "
+                f"Overall: {score['overall']:.2f} (Rel: {score['relevance']}, Grd: {score['groundedness']}, Ton: {score['tone']}, Esc: {score['escalation']})"
+            )
 
+    for idx, ex in enumerate(golden_set):
+        j_score = judge_scores[idx]
+        pred = agent_preds[idx]
         record = {
             "example_id": ex.id,
             "conversation_id": ex.conversation_id,
@@ -145,8 +159,8 @@ def run_evaluation(
             "confidence": pred.intent_confidence,
             "reason": pred.reason,
             "reply": pred.reply,
-            "top1_similarity": top1_sim,
-            "intent_concordance": intent_match,
+            "top1_similarity": agent_top1_sims[idx],
+            "intent_concordance": agent_intent_matches[idx],
             "judge_relevance": j_score["relevance"],
             "judge_groundedness": j_score["groundedness"],
             "judge_tone": j_score["tone"],
@@ -266,6 +280,8 @@ def run_evaluation(
     print(f"  Overall Score:                      {avg_judge_ovr:.2f} / 5.0")
     if judge_method == "deterministic_rubric":
         print("  Notice: Evaluated using deterministic fallback rubric (no GEMINI_API_KEY provided in environment).")
+    else:
+        print(f"  Notice: Evaluated using actual Gemini LLM-as-a-Judge ({judge_method}). Deterministic fallback was NOT used.")
     print("=" * 80 + "\n")
 
     return metrics_df, per_intent_df, full_eval_records

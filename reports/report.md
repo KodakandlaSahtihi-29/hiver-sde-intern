@@ -154,11 +154,11 @@ Our escalation engine implements conservative engineering rules designed to prev
 The complete evaluation harness (`scripts/evaluate.py`) was executed against the 200 human-verified golden examples.
 
 ### Headline Benchmark Comparison:
-| Model / System | Intent Accuracy | Intent Macro F1 | Intent Weighted F1 | Escalation Accuracy | Escalate Recall (Human) | Auto-Handle F1 | Retrieval Concordance | Judge Score (Deterministic Fallback) |
+| Model / System | Intent Accuracy | Intent Macro F1 | Intent Weighted F1 | Escalation Accuracy | Escalate Recall (Human) | Auto-Handle F1 | Retrieval Concordance | Judge Score (LLM: Gemini Flash) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Baseline 1 (Majority Class)** | 0.2200 | 0.0601 | 0.0793 | 0.7950 | 0.0000 | 0.8858 | N/A | N/A |
 | **Baseline 2 (TF-IDF + LogReg on Weak Labels)** | 0.5250 | 0.3886 | 0.5345 | 0.7950 | 0.0244 | 0.8852 | N/A | N/A |
-| **Proposed AI Support Agent** | **0.6800** | **0.6246** | **0.7051** | **0.8450** | **0.7805** | **0.8984** | **43.5%** | **4.40 / 5.0** |
+| **Proposed AI Support Agent** | **0.6800** | **0.6246** | **0.7051** | **0.8450** | **0.7805** | **0.8984** | **43.5%** | **3.63 / 5.0** |
 
 ---
 
@@ -197,13 +197,13 @@ The complete evaluation harness (`scripts/evaluate.py`) was executed against the
 - **Evidence Coverage ($\text{sim} \ge 0.18$)**: **99.5%**
 - **Intent Concordance @ 1**: **43.5%** (In 43.5% of queries, the top retrieved historical conversation belonged to the exact same verified intent category).
 
-### Reply Quality Evaluation (Deterministic Fallback Rubric: 1–5 Scale across 200 Replies):
-*Note: Evaluated using our deterministic rule-anchored rubric because no remote LLM API key was provided in the offline evaluation environment. The repository includes the full LLM-as-a-Judge implementation (`src/evaluation/judge.py`), which calls Gemini 1.5 Flash when `GEMINI_API_KEY` is set.*
-- **Relevance**: `4.11 / 5.0`
-- **Groundedness**: `4.65 / 5.0` (Strict compliance with official Apple support domains and anti-hallucination guardrails)
-- **Tone & Empathy**: `4.18 / 5.0` (Consistent Apple Support persona)
-- **Escalation Appropriateness**: `4.68 / 5.0` (Strong routing alignment)
-- **Overall Quality Mean**: **4.40 / 5.0**
+### Reply Quality Evaluation (LLM-as-a-Judge: Gemini 3.1 Flash Lite across 200 Replies):
+*Note: Evaluated directly via the Google Gemini API (`gemini-3.1-flash-lite`) using the 4-part rubric in `src/evaluation/judge.py`. When run offline without an API key, the harness provides a deterministic fallback rubric (which scored 4.40 / 5.0). The real LLM judge evaluates nuanced conversational quality with stricter criteria:*
+- **Relevance**: `2.84 / 5.0` (Penalizes terse replies or generic troubleshooting steps on complex inquiries)
+- **Groundedness**: `4.19 / 5.0` (High factual alignment with official Apple support domains and anti-hallucination guardrails)
+- **Tone & Empathy**: `4.07 / 5.0` (Consistent Apple Support persona, polite and professional)
+- **Escalation Appropriateness**: `3.41 / 5.0` (Penalizes conservative over-escalation on simple queries and false negatives on high-risk cases)
+- **Overall Quality Mean**: **3.63 / 5.0**
 
 ---
 
@@ -246,8 +246,8 @@ While this represents substantial gains over both the majority class baseline (2
 3. **Escalation Accuracy (84.5%) Masks 9 False Negatives**:
    - While 84.5% escalation accuracy appears strong, the trivial baseline achieves 79.5% accuracy simply by *never escalating*.
    - Our agent achieves **78.05% recall on human escalation** (32 / 41 detected). However, 9 out of 41 high-risk inquiries were still auto-handled. In production, every un-escalated billing or security complaint represents a critical service failure.
-4. **Retrieval Concordance is 43.5%, Yet Quality Scores are 4.40/5.0**:
-   - In 56.5% of queries, retrieval returned an exemplar from a different intent bucket. Despite this, the deterministic quality rubric awarded an average score of 4.40/5.0. This reveals that rule-based rubrics heavily reward fluent, polite support phrasing and official URL guardrails, masking semantic mismatch in historical retrieval.
+4. **Retrieval Concordance is 43.5%, While Groundedness is 4.19/5.0**:
+   - In 56.5% of queries, retrieval returned an exemplar from a different intent bucket. Despite this, the Gemini LLM judge awarded Groundedness 4.19/5.0 and Tone 4.07/5.0 because the agent's anti-hallucination guardrails enforce official Apple URL anchors (`support.apple.com`, `appleid.apple.com`) and standard support framing regardless of retrieval drift. However, Relevance dropped to 2.84/5.0, exposing the true semantic limitation of lexical retrieval on short tweets. (Note: The heuristic deterministic fallback scored 4.40/5.0 because it heavily rewards keyword presence, illustrating how deterministic rubrics can mask semantic mismatch compared to a true LLM judge).
 
 ---
 
@@ -285,4 +285,4 @@ A complete, detailed rationale for each decision is documented in [reports/decis
 9. **Two-Stage Golden Set Review Workflow**: Candidate extraction from real Twitter threads followed by human verification via `review_queue.csv`, preserving realistic customer typos and frustration without synthetic artifacts.
 10. **Defensible Retrieval Metrics**: Measured Intent Concordance @ 1 (43.5%) and Cosine Similarity distributions instead of fabricating synthetic binary precision labels.
 11. **Two Distinct Empirical Baselines**: Evaluated against both a trivial baseline (Majority Class: 22.0% accuracy, 0% escalation recall) and a simple ML baseline (TF-IDF + Logistic Regression trained on training-corpus weak labels: 52.5% accuracy, 2.44% escalation recall) to demonstrate genuine value add.
-12. **Dual-Mode LLM-as-a-Judge**: Designed the judge module to run seamlessly with Gemini 1.5 Flash when `GEMINI_API_KEY` is present, while providing a transparent deterministic fallback rubric for offline, reproducible evaluation.
+12. **Dual-Mode LLM-as-a-Judge**: Designed the judge module to run live with Google Gemini (`gemini-3.1-flash-lite`) when `GEMINI_API_KEY` is configured, while providing a transparent deterministic fallback rubric for offline, reproducible evaluation.
